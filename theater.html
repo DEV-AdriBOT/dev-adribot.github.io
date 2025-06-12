@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theater of the Mind | Neon Dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+        
+        body {
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+            font-family: 'Aldrich', sans-serif;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #00f3ff, 0 0 15px #00f3ff, 0 0 30px #00f3ff;
+            color: #ffffff;
+        }
+        
+        .neon-border {
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 10px #00f3ff, 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+        
+        .neon-glow {
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #00f3ff, 0 0 10px rgba(0, 243, 255, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px #00f3ff, 0 0 30px rgba(0, 243, 255, 0.8);
+            }
+        }
+        
+        .stage-curtain {
+            background: linear-gradient(90deg, #a50000 0%, #a50000 40%, #000000 50%, #a50000 60%, #a50000 100%);
+            height: 4px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .stage-curtain::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(180deg, rgba(165,0,0,0.8) 0%, rgba(165,0,0,0.1) 100%);
+            border-left: 1px solid rgba(255,255,255,0.2);
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with neon glow -->
+    <header class="bg-black py-10 px-5 md:px-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10" style="background: radial-gradient(circle, rgba(0,243,255,0.8) 0%, rgba(0,0,0,0) 70%);"></div>
+        <div class="relative z-10 text-center">
+            <h1 class="text-4xl md:text-7xl font-bold mb-5 neon-text font-orbitron animate-pulse">THEATER OF THE MIND</h1>
+            <p class="text-xl md:text-2xl mb-2 opacity-80">A Surreal Visual Novel Experience</p>
+            <p class="text-sm md:text-base opacity-60">By NEON DEV</p>
+        </div>
+    </header>
+
+    <!-- Navigation (could be expanded) -->
+    <nav class="flex justify-center py-4 border-t-2 border-b-2 border-cyan-500 border-opacity-20">
+        <ul class="flex space-x-8 text-sm md:text-base">
+            <li><a href="#about" class="hover:text-cyan-400 transition duration-300">About</a></li>
+            <li><a href="#screenshots" class="hover:text-cyan-400 transition duration-300">Screenshots</a></li>
+            <li><a href="#access" class="hover:text-cyan-400 transition duration-300">Early Access</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-5 py-10 max-w-5xl">
+        <!-- About Section -->
+        <section id="about" class="mb-20">
+            <div class="flex items-center mb-8">
+                <div class="mr-4 w-2 h-12 bg-cyan-500"></div>
+                <h2 class="text-3xl md:text-4xl font-bold neon-text">About the Game</h2>
+            </div>
+            
+            <div class="neon-border p-6 rounded-lg mb-10 relative bg-black bg-opacity-50">
+                <p class="text-lg italic mb-6">"<span class="text-cyan-400">Theater of the Mind</span> is a surreal visual novel set in the subconscious of a character with repressed trauma. Each act represents an emotion turned into a stage. Each scene, an unanswered question."</p>
+                
+                <p class="mb-6">Currently in alpha development using Python with Pygame, the game explores psychological themes through interactive narrative and symbolic puzzles.</p>
+                
+                <div class="stage-curtain mb-8"></div>
+                
+                <h3 class="text-2xl font-bold mb-4 text-cyan-400">FEATURES:</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-theater-masks text-cyan-500 mr-3 mt-1"></i>
+                        <span>Narrative divided into theatrical acts</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-brain text-cyan-500 mr-3 mt-1"></i>
+                        <span>Psychological puzzles</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-comments text-cyan-500 mr-3 mt-1"></i>
+                        <span>Dialogue choices that alter the story</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-music text-cyan-500 mr-3 mt-1"></i>
+                        <span>Adaptive emotional soundtrack</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-mask text-cyan-500 mr-3 mt-1"></i>
+                        <span>Unique puppet theater visual style</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Screenshots Section -->
+        <section id="screenshots" class="mb-20">
+            <div class="flex items-center mb-8">
+                <div class="mr-4 w-2 h-12 bg-cyan-500"></div>
+                <h2 class="text-3xl md:text-4xl font-bold neon-text">Screenshots</h2>
+            </div>
+            
+            <div class="neon-border p-6 rounded-lg bg-black bg-opacity-50 relative">
+                <div class="text-center py-32">
+                    <p class="text-xl neon-text mb-4">COMING SOON</p>
+                    <div class="text-4xl animate-pulse">
+                        <i class="fas fa-camera-retro text-cyan-500"></i>
+                    </div>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="grid grid-cols-3 gap-2 w-full h-full opacity-10">
+                        <div class="bg-cyan-900"></div>
+                        <div class="bg-cyan-800"></div>
+                        <div class="bg-cyan-700"></div>
+                        <div class="bg-cyan-600"></div>
+                        <div class="bg-cyan-500"></div>
+                        <div class="bg-cyan-400"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Early Access Section -->
+        <section id="access">
+            <div class="flex items-center mb-8">
+                <div class="mr-4 w-2 h-12 bg-cyan-500"></div>
+                <h2 class="text-3xl md:text-4xl font-bold neon-text">Get Early Access</h2>
+            </div>
+            
+            <div class="neon-border neon-glow p-6 rounded-lg bg-black bg-opacity-50 mb-8">
+                <p class="mb-6">The alpha version is available now for testing and feedback. As this is an early version, purchases help support continued development.</p>
+                
+                <div class="stage-curtain mb-8"></div>
+                
+                <h3 class="text-2xl font-bold mb-4 text-cyan-400">PURCHASE VIA DISCORD</h3>
+                <p class="mb-6">Contact me directly on Discord to get access to the alpha version:</p>
+                
+                <a href="https://discord.com/users/mr_neon_dev" 
+                   class="inline-flex items-center px-6 py-3 bg-cyan-900 hover:bg-cyan-700 rounded-lg transition duration-300 neon-glow mb-8">
+                    <i class="fab fa-discord mr-3 text-2xl"></i>
+                    <span class="font-bold">Message mr_neon_dev</span>
+                </a>
+                
+                <p class="text-sm opacity-80">I'll provide download instructions and payment details after you contact me.</p>
+            </div>
+            
+            <div class="neon-border p-6 rounded-lg bg-black bg-opacity-20">
+                <h4 class="text-xl font-bold mb-4 text-amber-400">ALPHA VERSION DISCLAIMER:</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-1"></i>
+                        <span>Game is in active development</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-1"></i>
+                        <span>Content may change significantly</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-1"></i>
+                        <span>Some features may be incomplete</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2 mt-1"></i>
+                        <span>Available for Windows initially (Mac/Linux coming later)</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="mt-20 py-10 border-t border-cyan-900 text-center text-sm opacity-70">
+        <p>© 2023 NEON DEV. "Theater of the Mind" is a work-in-progress project.</p>
+        <p class="mt-2 text-xs">All trademarks and registered trademarks are the property of their respective owners.</p>
+    </footer>
+    
+    <!-- Script for smooth scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
