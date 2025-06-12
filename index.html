@@ -8,45 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Ubuntu:wght@300;400;500&display=swap');
-        
+
         body {
             font-family: 'Ubuntu', sans-serif;
             background-color: #0f0f1a;
             color: #e0e0ff;
             overflow-x: hidden;
         }
-        
+
         .neon-text {
             text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa;
             animation: flicker 1.5s infinite alternate;
         }
-        
+
         .neon-border {
             box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #0fa, 0 0 0.8rem #0fa;
         }
-        
+
         .neon-card:hover {
             box-shadow: 0 0 1rem #fff, 0 0 1.5rem #0fa, 0 0 2rem #0fa;
             transform: translateY(-5px);
         }
-        
+
         .title-font {
             font-family: 'Orbitron', sans-serif;
         }
-        
+
         @keyframes flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
                 text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #0fa, 0 0 80px #0fa, 0 0 90px #0fa;
             }
-            20%, 24%, 55% {       
+            20%, 24%, 55% {
                 text-shadow: none;
             }
         }
-        
+
         .glow {
             animation: glow 2s ease-in-out infinite alternate;
         }
-        
+
         @keyframes glow {
             from {
               box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0fa, 0 0 20px #0fa;
@@ -55,7 +55,7 @@
               box-shadow: 0 0 10px #fff, 0 0 15px #0af, 0 0 20px #0af, 0 0 25px #0af;
             }
         }
-        
+
         .gradient-text {
             background: linear-gradient(90deg, #0fa, #0af);
             -webkit-background-clip: text;
@@ -99,7 +99,7 @@
     <!-- Games Section -->
     <section id="games" class="py-20 container mx-auto px-4">
         <h2 class="text-4xl font-bold mb-12 text-center title-font gradient-text">My Games</h2>
-        
+
         <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             <!-- Theater of the Mind -->
             <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-card transition-all duration-300 backdrop-blur-md border border-gray-700">
@@ -110,12 +110,12 @@
                     <h3 class="text-2xl font-bold mb-2 gradient-text">Theater of the Mind</h3>
                     <p class="text-cyan-300 mb-4">Psychological Visual Novel</p>
                     <p class="text-gray-300 mb-6">A surreal journey through a fragmented psyche</p>
-                    <a href="https://dev-adribot.github.io/Neon-Dev-Hub/theater" class="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full transition-colors">
+                    <a href="https://dev-adribot.github.io/theater" class="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full transition-colors">
                         Try the alpha
                     </a>
                 </div>
             </div>
-            
+
             <!-- FitBoard -->
             <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-card transition-all duration-300 backdrop-blur-md border border-gray-700">
                 <div class="flex flex-col items-center text-center">
@@ -125,7 +125,7 @@
                     <h3 class="text-2xl font-bold mb-2 gradient-text">FitBoard</h3>
                     <p class="text-pink-300 mb-4">Now Released</p>
                     <p class="text-gray-300 mb-6">The best tools for doing exercise</p>
-                    <a href="https://dev-adribot.github.io/Neon-Dev-Hub/fitboard" class="px-6 py-2 bg-pink-600 hover:bg-pink-500 text-white rounded-full transition-colors">
+                    <a href="https://dev-adribot.github.io/fitboard" class="px-6 py-2 bg-pink-600 hover:bg-pink-500 text-white rounded-full transition-colors">
                         Get It Now
                     </a>
                 </div>
@@ -139,7 +139,7 @@
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-4xl font-bold mb-8 title-font text-center gradient-text">About Neon Dev</h2>
                 <p class="text-xl mb-12 text-center">Independent developer specializing in narrative experiences that explore human psychology.</p>
-                
+
                 <div class="grid md:grid-cols-2 gap-10">
                     <div>
                         <h3 class="text-2xl font-bold mb-6 gradient-text">Skills</h3>
@@ -162,7 +162,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="bg-gray-800 bg-opacity-30 rounded-xl p-6 border border-gray-700">
                         <h3 class="text-2xl font-bold mb-6 gradient-text">Mis Logros</h3>
                         <div class="space-y-4">
@@ -196,7 +196,7 @@
         <div class="absolute inset-0 bg-gradient-to-tl from-cyan-900 via-indigo-900 to-purple-900 opacity-20"></div>
         <div class="container mx-auto px-4 relative">
             <h2 class="text-4xl font-bold mb-12 text-center title-font gradient-text">Contact</h2>
-            
+
             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
                 <form class="space-y-6">
                     <div>
@@ -215,7 +215,7 @@
                         Send Message
                     </button>
                 </form>
-                
+
                 <div>
                     <h3 class="text-2xl font-bold mb-6 gradient-text">Connect With Me</h3>
                     <div class="space-y-4">
@@ -232,7 +232,7 @@
                             <span>contact@neondev.example.com</span>
                         </a>
                     </div>
-                    
+
                     <div class="mt-10 bg-gray-800 bg-opacity-30 rounded-xl p-6 border border-gray-700">
                         <h4 class="text-xl font-bold mb-4 gradient-text">Join My Community</h4>
                         <p class="text-gray-300 mb-4">For updates on new projects and releases</p>
