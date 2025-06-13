@@ -56,6 +56,39 @@
             }
         }
 
+        /* Accessibility Styles */
+        .high-contrast {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        
+        .high-contrast .gradient-text,
+        .high-contrast .neon-text,
+        .high-contrast .neon-border {
+            color: #fff !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            -webkit-text-fill-color: #fff !important;
+        }
+        
+        .no-neon .neon-text,
+        .no-neon .neon-border,
+        .no-neon .neon-card:hover,
+        .no-neon .glow {
+            text-shadow: none !important;
+            box-shadow: none !important;
+            animation: none !important;
+        }
+        
+        .no-neon .gradient-text {
+            color: #fff !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            -webkit-text-fill-color: #fff !important;
+        }
+
         .gradient-text {
             background: linear-gradient(90deg, #0fa, #0af);
             -webkit-background-clip: text;
@@ -238,6 +271,30 @@
     </section>
 
     <!-- Footer -->
+    <!-- Accessibility Menu -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <button id="accessibilityToggle" class="bg-cyan-700 text-white p-3 rounded-full shadow-lg hover:bg-cyan-600 transition-colors">
+            <i class="fas fa-universal-access text-xl"></i>
+        </button>
+        <div id="accessibilityMenu" class="hidden absolute bottom-full left-0 mb-2 w-56 bg-gray-800 rounded-lg shadow-xl p-4 space-y-3">
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="toggle-contrast">
+                <i class="fas fa-adjust mr-3 text-cyan-400"></i> High Contrast
+            </button>
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="toggle-neon">
+                <i class="fas fa-lightbulb mr-3 text-purple-400"></i> Toggle Neon Effects
+            </button>
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="increase-text">
+                <i class="fas fa-text-height mr-3 text-green-400"></i> Increase Text Size
+            </button>
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="decrease-text">
+                <i class="fas fa-text-width mr-3 text-yellow-400"></i> Decrease Text Size
+            </button>
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="reset">
+                <i class="fas fa-undo mr-3 text-red-400"></i> Reset All
+            </button>
+        </div>
+    </div>
+
     <footer class="bg-black bg-opacity-90 py-6">
         <div class="container mx-auto px-4 text-center">
             <p class="text-gray-400">&copy; 2025 Neon Dev Apps Hub. All rights reserved.</p>
@@ -256,6 +313,51 @@
     </footer>
 
     <script>
+        // Accessibility Menu Toggle
+        const accessibilityToggle = document.getElementById('accessibilityToggle');
+        const accessibilityMenu = document.getElementById('accessibilityMenu');
+        
+        accessibilityToggle.addEventListener('click', () => {
+            accessibilityMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!accessibilityToggle.contains(e.target) && !accessibilityMenu.contains(e.target)) {
+                accessibilityMenu.classList.add('hidden');
+            }
+        });
+
+        // Accessibility Functions
+        document.querySelectorAll('[data-action]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const action = e.currentTarget.getAttribute('data-action');
+                
+                switch (action) {
+                    case 'toggle-contrast':
+                        document.body.classList.toggle('high-contrast');
+                        break;
+                    case 'toggle-neon':
+                        document.body.classList.toggle('no-neon');
+                        break;
+                    case 'increase-text':
+                        const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+                        document.body.style.fontSize = (currentSize + 1) + 'px';
+                        break;
+                    case 'decrease-text':
+                        const currentSizeDecrease = parseFloat(getComputedStyle(document.body).fontSize);
+                        if (currentSizeDecrease > 14) {
+                            document.body.style.fontSize = (currentSizeDecrease - 1) + 'px';
+                        }
+                        break;
+                    case 'reset':
+                        document.body.classList.remove('high-contrast', 'no-neon');
+                        document.body.style.fontSize = '';
+                        break;
+                }
+            });
+        });
+
         // Simple mobile menu toggle
         document.querySelector('button').addEventListener('click', function() {
             const nav = document.querySelector('.hidden.md\\:flex');
