@@ -6,601 +6,302 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Dev Apps Hub</title>
-    
-    <!-- Material Web Components -->
-    <script type="module" src="https://esm.run/@material/web/all.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --md-sys-color-primary: #bb86fc;
-            --md-sys-color-on-primary: #121212;
-            --md-sys-color-primary-container: #3700b3;
-            --md-sys-color-on-primary-container: #ffffff;
-            --md-sys-color-secondary: #03dac6;
-            --md-sys-color-on-secondary: #000000;
-            --md-sys-color-secondary-container: #018786;
-            --md-sys-color-on-secondary-container: #ffffff;
-            --md-sys-color-surface: #121212;
-            --md-sys-color-on-surface: #ffffff;
-            --md-sys-color-surface-variant: #1e1e1e;
-            --md-sys-color-on-surface-variant: #e0e0e0;
-            --md-sys-color-outline: #666666;
-            --md-sys-color-shadow: #000000;
-            --md-sys-color-inverse-surface: #e0e0e0;
-            --md-sys-color-inverse-on-surface: #121212;
-            --md-sys-color-inverse-primary: #3700b3;
-        }
-        
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Ubuntu:wght@300;400;500&display=swap');
+
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            margin: 0;
-            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #0f0f1a;
+            color: #e0e0ff;
             overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        .neon-text {
+            text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa;
+            animation: flicker 1.5s infinite alternate;
         }
-        
-        /* Header */
-        header {
-            background-color: var(--md-sys-color-surface-variant);
-            padding: 0 24px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+
+        .neon-border {
+            box-shadow: 0 0 .2rem #fff, 0 0 .2rem #fff, 0 0 2rem #0fa, 0 0 0.8rem #0fa;
         }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 64px;
+
+        .neon-card:hover {
+            box-shadow: 0 0 1rem #fff, 0 0 1.5rem #0fa, 0 0 2rem #0fa;
+            transform: translateY(-5px);
         }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--md-sys-color-primary);
-            text-decoration: none;
+
+        .title-font {
+            font-family: 'Orbitron', sans-serif;
         }
-        
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-        
-        .nav-links a {
-            color: var(--md-sys-color-on-surface-variant);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: 16px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--md-sys-color-primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(187, 134, 252, 0.1) 0%, transparent 70%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            color: var(--md-sys-color-on-surface);
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            color: var(--md-sys-color-on-surface-variant);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Projects Section */
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--md-sys-color-on-surface);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .project-card {
-            background-color: var(--md-sys-color-surface-variant);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        
-        .project-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 120px;
-            background-color: rgba(187, 134, 252, 0.1);
-            font-size: 48px;
-        }
-        
-        .project-content {
-            padding: 24px;
-        }
-        
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--md-sys-color-on-surface);
-        }
-        
-        .project-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-            border-radius: 20px;
-            font-size: 0.875rem;
-            margin-bottom: 12px;
-        }
-        
-        .project-content p {
-            color: var(--md-sys-color-on-surface-variant);
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-        
-        /* About Section */
-        .about {
-            background-color: var(--md-sys-color-surface-variant);
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .about-text {
-            color: var(--md-sys-color-on-surface-variant);
-            line-height: 1.8;
-        }
-        
-        .about-text h3 {
-            font-size: 1.75rem;
-            margin-bottom: 24px;
-            color: var(--md-sys-color-on-surface);
-        }
-        
-        .skills-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .skills-list li {
-            padding: 12px 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .skills-list li::before {
-            content: '✓';
-            color: var(--md-sys-color-primary);
-            margin-right: 12px;
-            font-weight: bold;
-        }
-        
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .contact-info {
-            color: var(--md-sys-color-on-surface-variant);
-        }
-        
-        .contact-info h3 {
-            font-size: 1.75rem;
-            margin-bottom: 24px;
-            color: var(--md-sys-color-on-surface);
-        }
-        
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            background-color: var(--md-sys-color-surface-variant);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--md-sys-color-on-surface-variant);
-            transition: background-color 0.3s ease;
-        }
-        
-        .contact-method:hover {
-            background-color: rgba(187, 134, 252, 0.1);
-        }
-        
-        .contact-method i {
-            margin-right: 12px;
-            font-size: 24px;
-            color: var(--md-sys-color-primary);
-        }
-        
-        .community-card {
-            background-color: var(--md-sys-color-surface-variant);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 40px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--md-sys-color-surface-variant);
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 24px 0;
-        }
-        
-        .social-links a {
-            color: var(--md-sys-color-on-surface-variant);
-            font-size: 24px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: var(--md-sys-color-primary);
-        }
-        
-        .copyright {
-            color: var(--md-sys-color-on-surface-variant);
-            font-size: 0.875rem;
-        }
-        
-        /* Accessibility Menu */
-        .accessibility-menu {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            z-index: 100;
-        }
-        
-        .menu-content {
-            background-color: var(--md-sys-color-surface-variant);
-            border-radius: 24px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        
-        .menu-btn {
-            padding: 8px 16px;
-            background: none;
-            border: none;
-            color: var(--md-sys-color-on-surface-variant);
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .menu-btn:hover {
-            background-color: rgba(187, 134, 252, 0.1);
-        }
-        
-        .menu-btn i {
-            width: 24px;
-            text-align: center;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .about-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #0fa, 0 0 80px #0fa, 0 0 90px #0fa;
             }
-            
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            20%, 24%, 55% {
+                text-shadow: none;
             }
         }
+
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+              box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0fa, 0 0 20px #0fa;
+            }
+            to {
+              box-shadow: 0 0 10px #fff, 0 0 15px #0af, 0 0 20px #0af, 0 0 25px #0af;
+            }
+        }
+
+        /* Accessibility Styles */
+        .high-contrast {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
         
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
+        .high-contrast .gradient-text,
+        .high-contrast .neon-text,
+        .high-contrast .neon-border {
+            color: #fff !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            -webkit-text-fill-color: #fff !important;
+        }
+        
+        .no-neon .neon-text,
+        .no-neon .neon-border,
+        .no-neon .neon-card:hover,
+        .no-neon .glow {
+            text-shadow: none !important;
+            box-shadow: none !important;
+            animation: none !important;
+        }
+        
+        .no-neon .gradient-text {
+            color: #fff !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            -webkit-text-fill-color: #fff !important;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #0fa, #0af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
-<body>
-    <!-- Google AdSense -->
+<body class="min-h-screen flex flex-col">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8687475396345059"
      crossorigin="anonymous"></script>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-8687475396345059"
-         data-ad-slot="5824832818"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <a href="#" class="logo">NEON DEV HUB</a>
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+<!-- Card -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8687475396345059"
+     data-ad-slot="5824832818"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-md py-4 px-6 sticky top-0 z-50 neon-border">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl title-font neon-text">NEON DEV HUB</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#projects" class="text-lg hover:text-cyan-300 transition-colors">Projects</a>
+                <a href="#about" class="text-lg hover:text-cyan-300 transition-colors">About</a>
+                <a href="#contact" class="text-lg hover:text-cyan-300 transition-colors">Contact</a>
             </div>
-            <button class="mobile-menu-btn">
-                <span class="material-symbols-outlined">menu</span>
+            <button class="md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Immersive Experiences</h1>
-            <p>Discover my interactive projects and applications that blend technology with creativity</p>
-            <md-filled-button href="#projects" label="View Projects"></md-filled-button>
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-indigo-900 to-fuchsia-900 opacity-60"></div>
+        <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <div class="absolute w-full h-full bg-grid-white/[0.05]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(180,100%,50%,0.1)_0,transparent_70%)]"></div>
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 title-font neon-text">Immersive Experiences</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Discover my interactive projects and applications</p>
+            <a href="#games" class="inline-block px-8 py-3 bg-cyan-500 text-black font-bold rounded-full glow hover:scale-105 transition-transform">
+                View Projects
+            </a>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <!-- Theater of the Mind -->
-                <div class="project-card">
-                    <div class="project-icon" style="color: #0fa;">
-                        <span class="material-symbols-outlined" style="font-size: 48px;">theaters</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>Theater of the Mind</h3>
-                        <span class="project-tag">Interactive Experience</span>
-                        <p>An immersive digital experience that explores the boundaries of imagination and technology.</p>
-                        <md-filled-button href="https://dev-adribot.github.io/theater" label="Try the alpha"></md-filled-button>
-                    </div>
-                </div>
+    <!-- Games Section -->
+    <section id="projects" class="py-20 container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-12 text-center title-font gradient-text">My Projects</h2>
 
-                <!-- FitBoard -->
-                <div class="project-card">
-                    <div class="project-icon" style="color: #f78;">
-                        <span class="material-symbols-outlined" style="font-size: 48px;">fitness_center</span>
+        <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+            <!-- Theater of the Mind -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-card transition-all duration-300 backdrop-blur-md border border-gray-700">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center mb-6 glow">
+                        <i class="fas fa-mask text-3xl text-cyan-400"></i>
                     </div>
-                    <div class="project-content">
-                        <h3>FitBoard</h3>
-                        <span class="project-tag">Featured Project</span>
-                        <p>A comprehensive fitness companion with personalized workout plans and progress tracking.</p>
-                        <md-filled-button href="https://dev-adribot.github.io/fitboard" label="Get It Now"></md-filled-button>
-                    </div>
-                </div>
-
-                <!-- MiniPad -->
-                <div class="project-card">
-                    <div class="project-icon" style="color: #8f8;">
-                        <span class="material-symbols-outlined" style="font-size: 48px;">devices</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>MiniPad</h3>
-                        <span class="project-tag">Modular Smart Device</span>
-                        <p>Ultra-portable, hackable device with NFC modular functionality for endless customization.</p>
-                        <md-filled-button href="https://dev-adribot.github.io/MiniPad/" label="Learn More"></md-filled-button>
-                    </div>
-                </div>
-
-                <!-- 3DPrintFusion -->
-                <div class="project-card">
-                    <div class="project-icon" style="color: #f90;">
-                        <span class="material-symbols-outlined" style="font-size: 48px;">print</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>3DPrintFusion</h3>
-                        <span class="project-tag">Custom 3D Printing</span>
-                        <p>Low-cost custom 3D printing services with fast turnaround and premium materials.</p>
-                        <md-filled-button href="https://dev-adribot.github.io/3DPrintFusion/" label="Order Now"></md-filled-button>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-2 gradient-text">Theater of the Mind</h3>
+                    <p class="text-cyan-300 mb-4">Interactive Experience</p>
+                    <p class="text-gray-300 mb-6">An immersive digital experience</p>
+                    <a href="https://dev-adribot.github.io/theater" class="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full transition-colors">
+                        Try the alpha
+                    </a>
                 </div>
             </div>
+
+            <!-- FitBoard -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-card transition-all duration-300 backdrop-blur-md border border-gray-700">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center mb-6 glow">
+                        <i class="fas fa-dumbbell text-3xl text-pink-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 gradient-text">FitBoard</h3>
+                    <p class="text-pink-300 mb-4">Featured Project</p>
+                    <p class="text-gray-300 mb-6">Useful digital tools and applications</p>
+                    <a href="https://dev-adribot.github.io/fitboard" class="px-6 py-2 bg-pink-600 hover:bg-pink-500 text-white rounded-full transition-colors">
+                        Get It Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- MiniPad -->
+            <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-card transition-all duration-300 backdrop-blur-md border border-gray-700">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center mb-6 glow">
+                        <i class="fas fa-microchip text-3xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 gradient-text">MiniPad</h3>
+                    <p class="text-green-300 mb-4">Modular Smart Device</p>
+                    <p class="text-gray-300 mb-6">Ultra-portable, hackable device with NFC modular functionality</p>
+                    <a href="https://dev-adribot.github.io/MiniPad/" class="px-6 py-2 bg-green-600 hover:bg-green-500 text-white rounded-full transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+                <!-- New 3DPrintFusion Card -->
+    <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-card transition-all duration-300 backdrop-blur-md border border-gray-700">
+        <div class="flex flex-col items-center text-center">
+            <div class="w-20 h-20 bg-gray-800 rounded-full flex items-center justify-center mb-6 glow">
+                <i class="fas fa-print text-3xl text-orange-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2 gradient-text">3DPrintFusion</h3>
+            <p class="text-orange-300 mb-4">Custom 3D Printing</p>
+            <p class="text-gray-300 mb-6">Low-cost custom 3D printing services with fast turnaround</p>
+            <a href="https://dev-adribot.github.io/3DPrintFusion/" class="px-6 py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-full transition-colors">
+                Order Now
+            </a>
+        </div>
+    </div>
         </div>
     </section>
 
-    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8687475396345059"
      crossorigin="anonymous"></script>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-format="autorelaxed"
-         data-ad-client="ca-pub-8687475396345059"
-         data-ad-slot="1289841373"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-8687475396345059"
+     data-ad-slot="1289841373"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
     <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title">About Neon Dev</h2>
-            <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: var(--md-sys-color-on-surface-variant);">
-                Independent developer specializing in narrative experiences that explore human psychology and innovative interfaces.
-            </p>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>My Journey</h3>
-                    <p>With a background in both psychology and computer science, I create experiences that blend technical innovation with deep human understanding. My work focuses on interactive storytelling and applications that push the boundaries of what's possible with modern web technologies.</p>
-                    <p>I believe in building tools that empower users and create meaningful connections. Each project is an opportunity to explore new ideas and challenge conventional approaches to digital experiences.</p>
-                </div>
-                
-                <div>
-                    <h3>Skills & Expertise</h3>
-                    <ul class="skills-list">
-                        <li>C++ & Modern Web Development</li>
-                        <li>Psychological Narrative Design</li>
-                        <li>Interactive Experience Design</li>
-                        <li>UX/UI Principles & Implementation</li>
-                        <li>Hardware-Software Integration</li>
-                        <li>Sound & Visual Design</li>
-                    </ul>
+    <section id="about" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-8 title-font text-center gradient-text">About Neon Dev</h2>
+                <p class="text-xl mb-12 text-center">Independent developer specializing in narrative experiences that explore human psychology.</p>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 gradient-text">Skills</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-cyan-400 rounded-full mr-3"></div>
+                                <span class="text-lg">C++ Development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-cyan-400 rounded-full mr-3"></div>
+                                <span class="text-lg">Psychological Narrative</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-cyan-400 rounded-full mr-3"></div>
+                                <span class="text-lg">Visual Design</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-3 h-3 bg-cyan-400 rounded-full mr-3"></div>
+                                <span class="text-lg">Sound Design</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            
-            <div class="contact-grid">
-                <form class="contact-form">
-                    <md-filled-text-field label="Name"></md-filled-text-field>
-                    <md-filled-text-field label="Email" type="email"></md-filled-text-field>
-                    <md-filled-text-field label="Message" type="textarea" rows="5"></md-filled-text-field>
-                    <md-filled-button type="submit" label="Send Message"></md-filled-button>
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tl from-cyan-900 via-indigo-900 to-purple-900 opacity-20"></div>
+        <div class="container mx-auto px-4 relative">
+            <h2 class="text-4xl font-bold mb-12 text-center title-font gradient-text">Contact</h2>
+
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-lg mb-2">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-lg mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Your email">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-lg mb-2">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 px-6 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-colors">
+                        Send Message
+                    </button>
                 </form>
-                
-                <div class="contact-info">
-                    <h3>Connect With Me</h3>
-                    <div class="contact-methods">
-                        <a href="https://twitter.com/neondev" class="contact-method">
-                            <span class="material-symbols-outlined">alternate_email</span>
+
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 gradient-text">Connect With Me</h3>
+                    <div class="space-y-4">
+                        <a href="https://twitter.com/neondev" class="flex items-center p-3 bg-gray-800 bg-opacity-50 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-twitter text-cyan-400 text-xl mr-3"></i>
                             <span>@neondev</span>
                         </a>
-                        <a href="https://github.com/neondev" class="contact-method">
-                            <span class="material-symbols-outlined">code</span>
-                            <span>github.com/neondev</span>
+                        <a href="https://github.com/neondev" class="flex items-center p-3 bg-gray-800 bg-opacity-50 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-github text-purple-400 text-xl mr-3"></i>
+                            <span>neondev</span>
                         </a>
-                        <a href="mailto:contact@neondev.example.com" class="contact-method">
-                            <span class="material-symbols-outlined">mail</span>
+                        <a href="mailto:contact@neondev.example.com" class="flex items-center p-3 bg-gray-800 bg-opacity-50 rounded-lg hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-envelope text-pink-400 text-xl mr-3"></i>
                             <span>contact@neondev.example.com</span>
                         </a>
                     </div>
-                    
-                    <div class="community-card">
-                        <h3 style="margin-top: 0;">Join My Community</h3>
-                        <p style="margin-bottom: 16px;">Get updates on new projects, releases, and exclusive content.</p>
-                        <div style="display: flex; gap: 8px;">
-                            <md-filled-text-field label="Your email" style="flex-grow: 1;"></md-filled-text-field>
-                            <md-filled-button label="Subscribe"></md-filled-button>
+
+                    <div class="mt-10 bg-gray-800 bg-opacity-30 rounded-xl p-6 border border-gray-700">
+                        <h4 class="text-xl font-bold mb-4 gradient-text">Join My Community</h4>
+                        <p class="text-gray-300 mb-4">For updates on new projects and releases</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="flex-grow px-4 py-2 bg-gray-700 rounded-l-lg focus:outline-none">
+                            <button class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-r-lg transition-colors font-medium">Subscribe</button>
                         </div>
                     </div>
                 </div>
@@ -609,40 +310,63 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="social-links">
-                <a href="#"><span class="material-symbols-outlined">public</span></a>
-                <a href="#"><span class="material-symbols-outlined">code</span></a>
-                <a href="#"><span class="material-symbols-outlined">forum</span></a>
-            </div>
-            <p class="copyright">© 2025 Neon Dev Apps Hub. All rights reserved.</p>
-        </div>
-    </footer>
-
     <!-- Accessibility Menu -->
-    <div class="accessibility-menu">
-        <div class="menu-content">
-            <button class="menu-btn" data-action="toggle-contrast">
-                <span class="material-symbols-outlined">contrast</span>
-                High Contrast
+    <div class="fixed bottom-6 left-6 z-50">
+        <button id="accessibilityToggle" class="bg-cyan-700 text-white p-3 rounded-full shadow-lg hover:bg-cyan-600 transition-colors">
+            <i class="fas fa-universal-access text-xl"></i>
+        </button>
+        <div id="accessibilityMenu" class="hidden absolute bottom-full left-0 mb-2 w-56 bg-gray-800 rounded-lg shadow-xl p-4 space-y-3">
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="toggle-contrast">
+                <i class="fas fa-adjust mr-3 text-cyan-400"></i> High Contrast
             </button>
-            <button class="menu-btn" data-action="increase-text">
-                <span class="material-symbols-outlined">text_increase</span>
-                Increase Text
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="toggle-neon">
+                <i class="fas fa-lightbulb mr-3 text-purple-400"></i> Toggle Neon Effects
             </button>
-            <button class="menu-btn" data-action="decrease-text">
-                <span class="material-symbols-outlined">text_decrease</span>
-                Decrease Text
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="increase-text">
+                <i class="fas fa-text-height mr-3 text-green-400"></i> Increase Text Size
             </button>
-            <button class="menu-btn" data-action="reset">
-                <span class="material-symbols-outlined">restart_alt</span>
-                Reset All
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="decrease-text">
+                <i class="fas fa-text-width mr-3 text-yellow-400"></i> Decrease Text Size
+            </button>
+            <button class="w-full text-left px-3 py-2 hover:bg-gray-700 rounded transition-colors flex items-center" data-action="reset">
+                <i class="fas fa-undo mr-3 text-red-400"></i> Reset All
             </button>
         </div>
     </div>
 
+    <footer class="bg-black bg-opacity-90 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2025 Neon Dev Apps Hub. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Accessibility Menu Toggle
+        const accessibilityToggle = document.getElementById('accessibilityToggle');
+        const accessibilityMenu = document.getElementById('accessibilityMenu');
+        
+        accessibilityToggle.addEventListener('click', () => {
+            accessibilityMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!accessibilityToggle.contains(e.target) && !accessibilityMenu.contains(e.target)) {
+                accessibilityMenu.classList.add('hidden');
+            }
+        });
+
         // Accessibility Functions
         document.querySelectorAll('[data-action]').forEach(button => {
             button.addEventListener('click', (e) => {
@@ -651,6 +375,9 @@
                 switch (action) {
                     case 'toggle-contrast':
                         document.body.classList.toggle('high-contrast');
+                        break;
+                    case 'toggle-neon':
+                        document.body.classList.toggle('no-neon');
                         break;
                     case 'increase-text':
                         const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
@@ -663,17 +390,26 @@
                         }
                         break;
                     case 'reset':
-                        document.body.classList.remove('high-contrast');
+                        document.body.classList.remove('high-contrast', 'no-neon');
                         document.body.style.fontSize = '';
                         break;
                 }
             });
         });
 
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            const nav = document.querySelector('.nav-links');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        // Simple mobile menu toggle
+        document.querySelector('button').addEventListener('click', function() {
+            const nav = document.querySelector('.hidden.md\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('right-4');
+            nav.classList.toggle('bg-gray-900');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('rounded-lg');
+            nav.classList.toggle('space-y-4');
         });
     </script>
 </body>
